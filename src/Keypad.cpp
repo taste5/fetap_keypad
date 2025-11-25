@@ -81,6 +81,7 @@ bool Keypad::getKeys() {
 
 // Private : Hardware scan
 void Keypad::scanKeys() {
+	
 	// bitMap stores ALL the keys that are being pressed.
 	for (byte c=0; c<sizeKpd.columns; c++) {
 		pin_mode(columnPins[c],OUTPUT);
@@ -91,7 +92,7 @@ void Keypad::scanKeys() {
 			pin_mode(rowPins[r], INPUT);
 		}
 		// Set pin to high impedance input. Effectively ends column pulse.
-		// pin_write(columnPins[c],HIGH);
+		pin_write(columnPins[c],HIGH);
 		pin_mode(columnPins[c],INPUT);
 	}
 }
